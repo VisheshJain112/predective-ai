@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from accounts.models import AD_User
+from accounts.models import AD_User,AD_Admin
 import pandas as pd
 from django.core.checks import messages
 from django.http.response import HttpResponse
@@ -448,6 +448,15 @@ def fetch_data_info(filepath,case_num):
 
 
 def storykey(request):
+    username = "admin"
+    password = "admin"
+
+    all_users = AD_Admin.objects.all()
+    for user in all_users:
+        if user.username == username and user.password == password:
+            recommendation_sheet = str(user.recommendation_file)
+            BASE_DIR = Path(__file__).resolve().parent.parent
+            recommendation_sheet = os.path.join(BASE_DIR,"media",recommendation_sheet)
 
     if request.method == "POST":
 
@@ -482,11 +491,11 @@ def storykey(request):
                     case_num = request.session['casenum']
                     prediction_output = str(user.prediction_output_file) 
                     test_sheet = str(user.data_input_file)
-                    recommendation_sheet = str(user.recommendation_file)
+                    
                     BASE_DIR = Path(__file__).resolve().parent.parent
                     test_sheet = os.path.join(BASE_DIR,"media",test_sheet)
                     prediction_output = os.path.join(BASE_DIR,"media",prediction_output)
-                    recommendation_sheet = os.path.join(BASE_DIR,"media",recommendation_sheet)
+                   
   
                     user_dict = fetch_data_info(test_sheet,case_num)
                     request.session['user_dict'] = user_dict

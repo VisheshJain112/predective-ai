@@ -26,7 +26,8 @@ urlpatterns = [
     path('storykey/', include('storykey.urls')),
     path('userinput/', include('userinput.urls')),
     path('useroptions/', include('useroptions.urls')),
-    path('user_ui/', include('user_ui.urls'))
+    path('user_ui/', include('user_ui.urls')),
+    path('feedback/', include('feedback.urls'))
     
     
 ]

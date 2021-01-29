@@ -23,7 +23,8 @@ def userinput(request):
     if request.method == "POST":
        
         
-        if request.POST.get("next") is not None:
+        
+            return redirect('feedback')
 
             pred_1 = request.POST['pred_1']
             pred_2 = request.POST['pred_2']
@@ -40,7 +41,7 @@ def userinput(request):
             user_inputs.save();
             print("Created")
     
-            return redirect('userinput')
+            return redirect('feedback')
     else:
         log_pred = request.session['log_pred']
     
