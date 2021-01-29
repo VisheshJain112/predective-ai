@@ -36,7 +36,7 @@ def get_dropdown_values(pred_1_fp,pred_2_fp,pred_3_fp,recom_1_fp,recom_2_fp,reco
         
 
 def user_ui(request):
-    print(request.POST)
+    
     if request.method == "POST":
         print(request.POST)
         
