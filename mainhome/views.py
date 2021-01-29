@@ -12,9 +12,9 @@ def mainhome(request):
         name = request.POST['name']
         countryCode = request.POST['countryCode']
         number = request.POST['number']
-        edtech = request.POST['edtech']
+        email = request.POST['email']
 
-        booking_info = demo_book.objects.create(name=name,countryCode= countryCode,number=number,edtech=edtech)
+        booking_info = demo_book.objects.create(name=name,countryCode= countryCode,number=number,email=email)
         booking_info.save();
         print("Created")
   

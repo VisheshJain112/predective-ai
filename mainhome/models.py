@@ -11,4 +11,4 @@ class demo_book(models.Model):
     name = models.CharField(max_length=100)
     countryCode  = models.CharField(max_length=100)
     number = models.CharField(max_length=100)
-    edtech = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
