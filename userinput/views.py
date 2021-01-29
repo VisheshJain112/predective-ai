@@ -21,6 +21,8 @@ import os
 def userinput(request):
 
     if request.method == "POST":
+        print("here is user input ")
+        print(request.POST)
        
         
         if request.POST.get("next") is not None:
@@ -38,9 +40,9 @@ def userinput(request):
 
             user_inputs = user_validation.objects.create(username = username,password = password,case_number = casenum,prediction_1=pred_1,prediction_2=pred_2,prediction_3=pred_3,recommendation_1 = recom_1,recommendation_2 = recom_2,recommendation_3 = recom_3)
             user_inputs.save();
-            print("Created")
+            print("User     Input Created")
     
-            return redirect('userinput')
+            return redirect('/')
     else:
         log_pred = request.session['log_pred']
     

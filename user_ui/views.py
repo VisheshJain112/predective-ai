@@ -38,7 +38,7 @@ def get_dropdown_values(pred_1_fp,pred_2_fp,pred_3_fp,recom_1_fp,recom_2_fp,reco
 def user_ui(request):
     
     if request.method == "POST":
-        print(request.POST)
+        
         
         if request.POST.get("submit") is not None:
                 
@@ -55,7 +55,7 @@ def user_ui(request):
 
             user_inputs = user_input.objects.create(username = username,password = password,case_number = casenum,prediction_1=pred_1,prediction_2=pred_2,prediction_3=pred_3,recommendation_1 = recom_1,recommendation_2 = recom_2,recommendation_3 = recom_3)
             user_inputs.save();
-            print("Created")
+           
     
             return redirect('userinput')
 
