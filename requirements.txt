@@ -6,3 +6,4 @@ whitenoise==5.2.0
 pillow
 pandas
 numpy
+xlrd
