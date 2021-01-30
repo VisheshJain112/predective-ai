@@ -43,7 +43,7 @@ def index_case(request):
                 request.session['ticket_start'] = ticket_start
                 request.session['ticket_end'] = ticket_end
 
-                return render(request,'index_case.html',{'case_num' : range(ticket_start,ticket_end)})
+                return render(request,'index_case.html',{'case_num' : range(ticket_start,ticket_end+1)})
 
 
     
