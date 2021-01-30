@@ -460,6 +460,8 @@ def storykey(request):
 
     if request.method == "POST":
 
+
+
         if request.POST.get("extract") is not None:
  
             username = request.session['username'] 
@@ -480,6 +482,14 @@ def storykey(request):
                     pass_this_user = user_dict[case_num]
 
                     return render(request,'extraction.html',{'story' : story,'user_dict' : pass_this_user,'extract' : "True"})
+
+        elif request.POST.get("home") is not None:
+            return redirect('/index/index_case')
+        elif request.POST.get("close") is not None:
+            return redirect('/')
+        elif request.POST.get("menu") is not None:
+            return redirect('/accounts/login')
+
         elif request.POST.get("next") is not None:
  
             username = request.session['username'] 

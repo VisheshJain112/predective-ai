@@ -9,9 +9,37 @@
   <link rel="stylesheet" href="{% static 'storykey/button_style.css' %}">
   <link rel="stylesheet" href="{% static 'user_input/style.css' %}">
   <link rel="stylesheet" href="{% static 'list2/header_style.css' %}">
+  <link rel="stylesheet" href="{% static 'home_but/home.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
+	<div id="content">
+		<form method="post">
+			{% csrf_token %}
+		<button type="submit" name="close" value="close"  class="btn"><i class="fa fa-close"></i></button>
+		</form>
+		
+	
+		
+	</div>
+	<div id="content1">
+		<form method="post">
+			{% csrf_token %}
+		
+		<button type="submit" name="home" value="home"  class="btn"><i class="fa fa-home"></i></button>
+	</form>
+	
+		
+	</div>
+	<div id="content2">
+		<form method="post">
+			{% csrf_token %}
+		
+		<button type="submit" name="menu" value="menu" class="btn"><i class="fa fa-bars"></i></button>
+	</form>
+	</div>
+	
 	<div class="flex text-gray-800 min-h-screen">
 
 		<main class="flex flex-col space-y-10 px-6 py-5 max-w-6xl mx-auto">

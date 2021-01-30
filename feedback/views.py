@@ -4,8 +4,20 @@ from accounts.models import AD_Admin,AD_User
 def feedback(request):
     if request.method == "POST":
         if request.POST.get("next") is not None:
-            request.session['casenum'] = request.session['casenum'] + 1
-            return redirect('/storykey/storykey')
+            ticket_end = request.session['ticket_end']
+            if request.session['casenum'] + 1 <= ticket_end:
+                request.session['casenum'] = request.session['casenum'] + 1
+                return redirect('/storykey/storykey')
+            else:
+                return render(request,'error.html')
+        elif request.POST.get("home") is not None:
+            return redirect('/index/index_case')
+        elif request.POST.get("close") is not None:
+            return redirect('/')
+        elif request.POST.get("menu") is not None:
+            return redirect('/accounts/login')
+        else:
+            return render(request,'error.html')
     else:
         username = "admin"
         password = "admin"

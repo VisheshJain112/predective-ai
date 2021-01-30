@@ -58,6 +58,14 @@ def user_ui(request):
             print("Created")
     
             return redirect('userinput')
+        elif request.POST.get("home") is not None:
+            return redirect('/index/index_case')
+        elif request.POST.get("close") is not None:
+            return redirect('/')
+        elif request.POST.get("menu") is not None:
+            return redirect('/accounts/login')
+        else:
+            return render(request,'error.html')
 
     else:
         username = "admin"
