@@ -5,7 +5,7 @@ def feedback(request):
     if request.method == "POST":
         if request.POST.get("next") is not None:
             request.session['casenum'] = request.session['casenum'] + 1
-            return redirect('storykey')
+            return redirect('/storykey/storykey')
     else:
         username = "admin"
         password = "admin"
