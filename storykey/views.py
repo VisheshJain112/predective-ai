@@ -443,7 +443,56 @@ def fetch_data_info(filepath,case_num):
 
 
 
+def list2(request):
+    username = "admin"
+    password = "admin"
 
+    all_users = AD_Admin.objects.all()
+    for user in all_users:
+        if user.username == username and user.password == password:
+            recommendation_sheet = str(user.recommendation_file)
+            BASE_DIR = Path(__file__).resolve().parent.parent
+            recommendation_sheet = os.path.join(BASE_DIR,"media",recommendation_sheet)
+        
+
+    username = request.session['username'] 
+    password = request.session['password'] 
+
+    all_users = AD_User.objects.all()
+    for user in all_users:
+        if user.username == username and user.password == password:
+            case_num = request.session['casenum']
+            prediction_output = str(user.prediction_output_file) 
+            test_sheet = str(user.data_input_file)
+            
+            BASE_DIR = Path(__file__).resolve().parent.parent
+            test_sheet = os.path.join(BASE_DIR,"media",test_sheet)
+            prediction_output = os.path.join(BASE_DIR,"media",prediction_output)
+            
+
+            user_dict = fetch_data_info(test_sheet,case_num)
+            request.session['user_dict'] = user_dict
+            app = application_window(p_start_code= int(case_num),p_end_code= int(case_num)+1,test_filepath=test_sheet,prediction_output_filepath=prediction_output,recommendation_filepath=recommendation_sheet)
+            log_user,log_pred,cat_dict = app.excute()
+            request.session['log_pred'] = log_pred
+            pass_this_user = user_dict[case_num]
+            
+            pass_this_log = log_user[int(case_num)]
+            
+            real_cat_dict = {}
+
+            for cat,value in cat_dict.items():
+                if len(value) > 0:
+                    real_cat_dict[cat] = value
+                else:
+                    pass
+            
+            pass_this_log = real_cat_dict
+
+            
+            #pass_this_log = pass_this_log['Feature Mappings']
+
+            return render(request,'list2.html',{'log_dict' : pass_this_log,'user_dict' : pass_this_user,'next' : "True"})
 
 
 
@@ -463,75 +512,15 @@ def storykey(request):
 
 
         if request.POST.get("extract") is not None:
+            request.session['biased_key'] = [] 
+            request.session['list_of_keys_inx'] = 0
+            print("here is the problem bbroo!!")
+            
+            return redirect('/extraction/extraction')
  
-            username = request.session['username'] 
-            password = request.session['password'] 
 
-            all_users = AD_User.objects.all()
-            for user in all_users:
-                if user.username == username and user.password == password:
-                    case_num = request.session['casenum']
-                    prediction_output = str(user.prediction_output_file) 
-                    test_sheet = str(user.data_input_file)
-                    BASE_DIR = Path(__file__).resolve().parent.parent
-                    test_sheet = os.path.join(BASE_DIR,"media",test_sheet)
-                    prediction_output = os.path.join(BASE_DIR,"media",prediction_output)
-                    story = fetch_story(prediction_output,case_num)
-                    user_dict = fetch_data_info(test_sheet,case_num)
-                    request.session['user_dict'] = user_dict
-                    pass_this_user = user_dict[case_num]
 
-                    return render(request,'extraction.html',{'story' : story,'user_dict' : pass_this_user,'extract' : "True"})
 
-        elif request.POST.get("home") is not None:
-            return redirect('/index/index_case')
-        elif request.POST.get("close") is not None:
-            return redirect('/')
-        elif request.POST.get("menu") is not None:
-            return redirect('/accounts/login')
-
-        elif request.POST.get("next") is not None:
- 
-            username = request.session['username'] 
-            password = request.session['password'] 
-
-            all_users = AD_User.objects.all()
-            for user in all_users:
-                if user.username == username and user.password == password:
-                    case_num = request.session['casenum']
-                    prediction_output = str(user.prediction_output_file) 
-                    test_sheet = str(user.data_input_file)
-                    
-                    BASE_DIR = Path(__file__).resolve().parent.parent
-                    test_sheet = os.path.join(BASE_DIR,"media",test_sheet)
-                    prediction_output = os.path.join(BASE_DIR,"media",prediction_output)
-                   
-  
-                    user_dict = fetch_data_info(test_sheet,case_num)
-                    request.session['user_dict'] = user_dict
-                    app = application_window(p_start_code= int(case_num),p_end_code= int(case_num)+1,test_filepath=test_sheet,prediction_output_filepath=prediction_output,recommendation_filepath=recommendation_sheet)
-                    log_user,log_pred,cat_dict = app.excute()
-                    request.session['log_pred'] = log_pred
-                    pass_this_user = user_dict[case_num]
-                  
-                    pass_this_log = log_user[int(case_num)]
-                    
-                    real_cat_dict = {}
-
-                    for cat,value in cat_dict.items():
-                        if len(value) > 0:
-                            real_cat_dict[cat] = value
-                        else:
-                            pass
-                    
-                    pass_this_log = real_cat_dict
-
-                    
-                    #pass_this_log = pass_this_log['Feature Mappings']
-
-                    return render(request,'list2.html',{'log_dict' : pass_this_log,'user_dict' : pass_this_user,'next' : "True"})
-        elif request.POST.get("f_next") is not None:
-            return redirect('user_ui')
 
 
         else:

@@ -27,6 +27,7 @@ urlpatterns = [
     path('userinput/', include('userinput.urls')),
     path('useroptions/', include('useroptions.urls')),
     path('user_ui/', include('user_ui.urls')),
+    path('extraction/', include('extraction.urls')),
     path('feedback/', include('feedback.urls'))
     
     

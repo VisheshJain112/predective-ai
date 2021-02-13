@@ -10,6 +10,14 @@ body {
   height: 100vh;
   position: relative;
 }
+.borderexample {
+  border-style:solid;
+  border-color:#e21515;
+ }
+ .mark {
+  background-color: red;
+  color: black;
+}
 .ocrloader {
   width: 1000px;
   height: 877px;
@@ -19,6 +27,7 @@ body {
   transform: translate(-50%, -4%);
   backface-visibility: hidden;
 }
+
 .ocrloader span {
   position: absolute;
   left: 0;

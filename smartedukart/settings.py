@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'smartedukart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'predectiveai',
+        'NAME': 'predai',
         'USER' : 'postgres',
         'PASSWORD': '1234',
         'HOST' : 'localhost'

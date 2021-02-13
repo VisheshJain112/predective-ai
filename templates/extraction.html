@@ -3,6 +3,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0.8;url=extraction" />
   <title>Story Extraction</title>
   <link rel='stylesheet' href='https://www.unpkg.com/tailwindcss@1.8.10/dist/tailwind-experimental.min.css'>
   <link rel="stylesheet" href="{% static 'extraction/style.css' %}">
@@ -97,7 +98,15 @@
             
               <div>
                 <div class="text-lg font-family-monospace">
-                {{story}}
+                {% for words in story_li %}
+                {% if words in biased_key %}
+                <mark>{{words}}&nbsp;</mark>
+                
+                {% else %}
+                {{words}}&nbsp;
+                {% endif %}
+
+                {% endfor %}
               </div>
               </div>
             <span></span>
@@ -108,13 +117,7 @@
  
  
 
-      <form method="post">
-        {% csrf_token %}
-        <div class="center">
-
-      <button type="submit" name="next" value="next" class="boton">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Next</button>
-
-      </form>
+     
     </div>
 
 
