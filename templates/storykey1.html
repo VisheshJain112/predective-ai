@@ -12,6 +12,17 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style type="text/css">
     #my_centered_buttons { display: flex; justify-content: center; }
+
+
+  
+    </style>
+    <style>
+            div.scroll
+      {
+ 
+      overflow:scroll;
+      }
+
     </style>
 
 </head>
@@ -80,9 +91,15 @@
         </div>
 
         {% if extract == "False" %}
+
+        <div class="scroll">
         <div class="h-64 bg-white border rounded-lg shadow-md py-4 px-6">
          
-            <p>{{story}}</p>
+            {{story}}
+          </div>
+          </div>
+         
+           
             
           </div>
           </section>

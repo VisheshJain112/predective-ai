@@ -25,6 +25,14 @@
     border: 3px solid rgb(255, 255, 255); 
   }
 </style>
+<style>
+  div.scroll
+{
+
+overflow:scroll;
+}
+
+</style>
 <body>
 
 <!-- partial:index.partial.html -->
@@ -63,10 +71,11 @@
             </svg>
           </a>
         </div>
+        <div class="scroll">
         <div class="h-64 bg-white border rounded-lg shadow-md py-4 px-6">
           <div class="ocrloader">
             
-              <div>
+           
                 <div class="text-lg font-family-monospace">
                 {% for words in story_li %}
                 {% if words in biased_key %}
@@ -78,6 +87,7 @@
 
                 {% endfor %}
               </div>
+            </div>
               </div>
             <span></span>
           </div>
