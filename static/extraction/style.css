@@ -20,7 +20,7 @@ body {
 }
 .ocrloader {
   width: 1000px;
-  height: 877px;
+  height: 400px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -44,7 +44,7 @@ body {
   z-index: 1;
   position: absolute;
   left: 50%;
-  top: 0%;
+  top: 10%;
 
   transform: translate(-50%, -4%);
   width: 80%;
