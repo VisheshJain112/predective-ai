@@ -31,10 +31,10 @@ body {
 .ocrloader > div {
   z-index: 1;
   position: absolute;
-  left: 50%;
+  left: 10%;
   top: 10%;
   transform: translate(-50%, -50%);
-  width: 48%;
+  width: 50%;
   backface-visibility: hidden;
 }
 .ocrloader i {

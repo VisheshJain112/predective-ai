@@ -471,7 +471,7 @@ def extraction(request):
                 request.session['user_dict'] = user_dict
                 pass_this_user = user_dict[case_num]
                 story_li = story.split()
-                list_of_keys = ['Covid','Michigan','Policyholders']
+                list_of_keys = ['Policyholders','COVID-19','Michigan']
                 inx_needed = int(request.session['list_of_keys_inx'])
                 if inx_needed < len(list_of_keys):
 

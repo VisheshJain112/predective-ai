@@ -5,11 +5,12 @@ html, body {
     
     .boton {
         width: 200px;
-   
+        top: 84%;
+        left: 41%;
         height: 50px;
         margin: 50px auto;
         display: block;
-        position: relative;
+        position: absolute;
     }
 
     .botontext {
