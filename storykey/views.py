@@ -16,6 +16,9 @@ import json
 from django.template.defaultfilters import register
 from pathlib import Path
 import os
+from datetime import datetime
+
+# datetime object containing current date and time
 
 class application_window():
 
@@ -569,6 +572,7 @@ def storykey(request):
                 user_dict = fetch_data_info(test_sheet,case_num)
                 request.session['user_dict'] = user_dict
                 pass_this_user = user_dict[case_num]
+
 
                 return render(request,'storykey1.html',{'story' : story,'user_dict' : pass_this_user,'extract' : "False"})
 

@@ -102,7 +102,8 @@ def user_ui(request):
                 
                 user_dict = request.session['user_dict']
                 pass_this_user = user_dict[str(case_num)]
+        ctime = request.session['ctime']
 
-        return render(request,'user_ui.html',{'user_dict' : pass_this_user,'pred_1' : pred_1,'pred_2' : pred_2,'pred_3' :pred_3,'recom_1' :recom_1,'recom_2' : recom_2,'recom_3' :recom_3})
+        return render(request,'user_ui.html',{'ctime':ctime,'user_dict' : pass_this_user,'pred_1' : pred_1,'pred_2' : pred_2,'pred_3' :pred_3,'recom_1' :recom_1,'recom_2' : recom_2,'recom_3' :recom_3})
 
     

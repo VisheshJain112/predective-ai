@@ -2,6 +2,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	ElapsedTimeLogger = function(dateElementId, elapsedElementId, interval) {
+		var container = $(elapsedElementId);
+		var time = parseDate($(dateElementId).text());
+		var interval = interval;
+		var timer;
+  
+		function parseDate(dateString) {
+			var date = new Date(dateString);
+			return date.getTime();
+		}
+  
+		function update() {
+			var systemTime = new Date().getTime();
+			elapsedTime = systemTime - time;
+			container.html(prettyPrintTime(Math.floor(elapsedTime / 1000)));
+		}
+  
+		function prettyPrintTime(numSeconds) {
+			var hours = Math.floor(numSeconds / 3600);
+			var minutes = Math.floor((numSeconds - (hours * 3600)) / 60);
+			var seconds = numSeconds - (hours * 3600) - (minutes * 60);
+  
+			hours = "00" ;
+			if (minutes < 10) minutes = "0" + minutes;
+			if (seconds < 10) seconds = "0" + seconds;
+			var time = hours + ":" + minutes + ":" + seconds;
+  
+			return time;
+		}
+  
+		this.start = function() {
+			timer = setInterval(function() {update()}, interval * 1000);
+		}
+  
+		this.stop = function() {
+			clearTimeout(timer);
+		}
+	}
+	$(document).ready(function () {
+		var timeLogger = new ElapsedTimeLogger("#date", "#elapsed", 1);
+		timeLogger.start();
+  
+		$("#stop_timer").click(function() {
+			timeLogger.stop();
+		});
+		$("#start_timer").click(function() {
+			timeLogger.start();
+		});
+	});
+	</script>
 	<title>Table V03</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,11 +124,17 @@
 			  GENDER : {{user_dict.gender}}<br> 
 			  ETHNICITY : {{user_dict.ethnicity}}<br>
 			  MAIN ISSUES : {{user_dict.issues}}<br>
+			  TIME ELAPSE :             <table align="right" border="1">
+				<tr><th>Started at</th><th>Time Elapsed</th></tr>
+				<tr><td id="date">{{ctime}}</td>&nbsp;&nbsp;<td id="elapsed"></td></tr>
+			</table><br>
 			</div>
 	
 		  </div>
 
 		</main>
+
+</div>
 		</section>
 
 		<div class="header">

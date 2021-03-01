@@ -16,6 +16,7 @@ import json
 from django.template.defaultfilters import register
 from pathlib import Path
 import os
+from datetime import datetime
 
 class application_window():
 
@@ -527,8 +528,18 @@ def extraction(request):
 
                             
                             #pass_this_log = pass_this_log['Feature Mappings']
+                                         
+                            now = datetime.now()
+            
+                        
 
-                            return render(request,'list2.html',{'log_dict' : pass_this_log,'user_dict' : pass_this_user,'next' : "True"})
+                            # dd/mm/YY H:M:S
+                            
+                            dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+                            request.session['ctime'] = dt_string
+                            ctime = request.session['ctime']
+
+                            return render(request,'list2.html',{'log_dict' : pass_this_log,'user_dict' : pass_this_user,'next' : "True",'ctime' : ctime})
 
                 
 
