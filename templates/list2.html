@@ -51,7 +51,7 @@
 		});
 
 	</script>
-	<title>Table V03</title>
+	<title>FEATURES</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -163,10 +163,10 @@
 					<table data-vertable="ver1">
 						<thead>
 							<tr class="row100 head">
-								<th class="column100 column1" data-column="column1"></th>
-								<th class="column100 column2" data-column="column2">Issue Category</th>
-								<th class="column100 column3" data-column="column3">Extracted Feature</th>
-								<th class="column100 column4" data-column="column4">Subsquent Sub-Feature</th>
+							
+								<th class="column100 column2" data-column="column1">Issue Category</th>
+								<th class="column100 column3" data-column="column2">Extracted Feature</th>
+								<th class="column100 column4" data-column="column3">Subsquent Sub-Feature</th>
 
 							</tr>
 						</thead>
@@ -174,11 +174,11 @@
 								{% for feature in value %}
 								{% for f_key,f_val in feature.items %}
 								<tr class="row100">
-									<th class="column100 column1" data-column="column1"></th>
-									<td class="column100 column1" data-column="column2">{{key}}</td>
+									
+									<td class="column100 column1" data-column="column1">{{key}}</td>
 
-									<td class="column100 column2" data-column="column3">{{f_key}}</td>
-									<td class="column100 column3" data-column="column4">{{f_val}}</td>
+									<td class="column100 column2" data-column="column2">{{f_key}}</td>
+									<td class="column100 column3" data-column="column3">{{f_val}}</td>
 								</tr>
 								{% endfor %}
 								{% endfor %}

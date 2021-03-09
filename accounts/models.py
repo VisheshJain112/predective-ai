@@ -1,8 +1,9 @@
+from user_ui.models import user_input
 from django.db import models
 
 # Create your models here.
 from django.db import models
-
+from django.contrib import admin
 class AD_User(models.Model):
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
@@ -26,6 +27,7 @@ class AD_Admin(models.Model):
     recommendation_1_dropdown = models.FileField(upload_to="data_pool")
     recommendation_2_dropdown = models.FileField(upload_to="data_pool")
     recommendation_3_dropdown = models.FileField(upload_to="data_pool")
+
 
 
 
