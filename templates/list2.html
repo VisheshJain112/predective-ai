@@ -164,7 +164,7 @@
 						<thead>
 							<tr class="row100 head">
 							
-								<th class="column100 column2" data-column="column1">Issue Category</th>
+								<th class="column100 column2" data-column="column1">{{key}}</th>
 								<th class="column100 column3" data-column="column2">Extracted Feature</th>
 								<th class="column100 column4" data-column="column3">Subsquent Sub-Feature</th>
 
@@ -175,7 +175,7 @@
 								{% for f_key,f_val in feature.items %}
 								<tr class="row100">
 									
-									<td class="column100 column1" data-column="column1">{{key}}</td>
+							
 
 									<td class="column100 column2" data-column="column2">{{f_key}}</td>
 									<td class="column100 column3" data-column="column3">{{f_val}}</td>
