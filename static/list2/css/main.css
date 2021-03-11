@@ -436,18 +436,18 @@ th, td {
   line-height: 1.4;
   text-transform: uppercase;
 
-  background-color: rgba(255,255,255,0.32);
+  background-color: #4801ff;
 }
 
 .table100.ver6 .row100:hover td {
-  background-color: rgba(255,255,255,0.1);
+  background-color: #4801ff;
 }
 
 .table100.ver6 .hov-column-ver6 {
-  background-color: rgba(255,255,255,0.1);
+  background-color: #4801ff;
 }
 
 
 .table100.ver6 .row100 td:hover {
-  background-color: rgba(255,255,255,0.2);
+  background-color: #4801ff;
 }

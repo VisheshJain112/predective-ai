@@ -7,7 +7,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 
 from django.contrib import messages
-from .models import user_input
+from .models import UserUiUserInput
 import pandas as pd
 # Create your views here.
 from django.db.models import Q
@@ -53,7 +53,7 @@ def user_ui(request):
             casenum = request.session['casenum']
 
 
-            user_inputs = user_input.objects.create(username = username,password = password,case_number = casenum,prediction_1=pred_1,prediction_2=pred_2,prediction_3=pred_3,recommendation_1 = recom_1,recommendation_2 = recom_2,recommendation_3 = recom_3)
+            user_inputs = UserUiUserInput.objects.create(username = username,password = password,case_number = casenum,prediction_1=pred_1,prediction_2=pred_2,prediction_3=pred_3,recommendation_1 = recom_1,recommendation_2 = recom_2,recommendation_3 = recom_3)
             user_inputs.save();
             print("Created")
     

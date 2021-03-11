@@ -1,4 +1,4 @@
-from user_ui.models import user_input
+
 from django.db import models
 
 # Create your models here.
