@@ -16,6 +16,7 @@ import json
 from django.template.defaultfilters import register
 from pathlib import Path
 import os
+from datetime import datetime
 # Create your views here.
 
 def get_dropdown_values(pred_1_fp,pred_2_fp,pred_3_fp,recom_1_fp,recom_2_fp,recom_3_fp):
@@ -51,9 +52,17 @@ def user_ui(request):
             username = request.session['username'] 
             password = request.session['password'] 
             casenum = request.session['casenum']
+            ctime = request.session['ctime']
+            now = datetime.now()
+            
+                        
 
+                            # dd/mm/YY H:M:S
+                            
+            dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+            time_taken = now-datetime.strptime(ctime,"%d/%m/%Y %H:%M:%S")
 
-            user_inputs = UserUiUserInput.objects.create(username = username,password = password,case_number = casenum,prediction_1=pred_1,prediction_2=pred_2,prediction_3=pred_3,recommendation_1 = recom_1,recommendation_2 = recom_2,recommendation_3 = recom_3)
+            user_inputs = UserUiUserInput.objects.create(username = username,started_at= ctime,time_taken=time_taken,password = password,case_number = casenum,prediction_1=pred_1,prediction_2=pred_2,prediction_3=pred_3,recommendation_1 = recom_1,recommendation_2 = recom_2,recommendation_3 = recom_3)
             user_inputs.save();
             print("Created")
     

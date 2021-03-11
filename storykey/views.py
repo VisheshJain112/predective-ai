@@ -494,8 +494,9 @@ def list2(request):
 
             
             #pass_this_log = pass_this_log['Feature Mappings']
+            ctime = request.session['ctime']
 
-            return render(request,'list2.html',{'log_dict' : pass_this_log,'user_dict' : pass_this_user,'next' : "True"})
+            return render(request,'list2.html',{'ctime':ctime,'log_dict' : pass_this_log,'user_dict' : pass_this_user,'next' : "True"})
 
 
 

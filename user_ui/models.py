@@ -23,8 +23,10 @@ class UserUiUserInput(models.Model):
     recommendation_1 = models.CharField(max_length=100)
     recommendation_2 = models.CharField(max_length=100)
     recommendation_3 = models.CharField(max_length=100)
+    started_at= models.CharField(max_length=100)
+    time_taken = models.CharField(max_length=100)
 
-    
+
 
 
     
